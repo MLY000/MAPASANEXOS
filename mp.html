@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>mapa MLY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilo para los títulos de los enlaces */
+        .link-title {
+            position: absolute;
+            color: #2b07e0; /* Letras en celeste */
+            font-size: 1em; /* Tamaño de letra más pequeño */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto para mejorar legibilidad */
+            z-index: 1001;
+            pointer-events: auto; /* Permite que el enlace sea clickeable */
+            white-space: nowrap; /* Evita el salto de línea */
+            background-color: #fff; /* Fondo blanco */
+            border: 2px solid #00aaff; /* Contorno celeste */
+            border-radius: 50px; /* Bordes redondeados para un diseño ovalado */
+            padding: 5px 10px; /* Espaciado interno */
+            text-align: center; /* Centrar el texto dentro del contorno */
+            display: flex; /* Usar flexbox para alinear el ícono y el texto */
+            align-items: center; /* Centrar verticalmente el contenido */
+            gap: 5px; /* Espacio entre ícono y texto */
+            transform: translate(-50%, -50%); /* Centrar el título en la posición */
+        }
+
+        .link-title a {
+            color: inherit; /* Hereda el color del título */
+            text-decoration: none; /* Elimina el subrayado */
+            display: flex; /* Alinear ícono y texto */
+            align-items: center; /* Centrar verticalmente el contenido */
+        }
+
+        .link-title a:hover {
+            text-decoration: underline; /* Agrega subrayado al pasar el mouse */
+            transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+            transition: transform 0.3s ease; /* Transición suave para el zoom */
+        }
+
+        /* Estilo para el ícono */
+        .link-title i {
+            font-size: 1.2em; /* Tamaño del ícono */
+            color: #00aaff; /* Color del ícono */
+        }
+
+        /* Contenedor para centrar la imagen */
+        .map-container {
+            position: relative;
+            display: flex;
+            justify-content: center; /* Centra la imagen horizontalmente */
+            align-items: center; /* Centra la imagen verticalmente (si es necesario) */
+            width: 100%;
+            height: 100vh; /* Altura completa de la ventana para centrar verticalmente */
+        }
+
+        /* Asegúrate de que la imagen ocupe todo el contenedor */
+        #mapa-img {
+            max-width: 100%; /* Ajusta el ancho máximo de la imagen al contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            display: block; /* Asegura que la imagen se muestre correctamente */
+        }
+    </style>
+</head>
+<body>
+    <h1>Mapa de imágenes</h1>
+    <div class="map-container">
+        <img src="celeste.jpg" alt="Mapa interactivo" usemap="#mapa-interactivo" id="mapa-img">
+        
+        <!-- Espacio para los títulos, agregados con JavaScript -->
+        <div id="titles-container"></div>
+    </div>
+    
+    
+    <map id="mapa-interactivo" name="mapa-interactivo">
+        <area shape="rect" coords="885,2,285,84" href="https://es.wikipedia.org/wiki/Valle_Verde" title="Valle Verde" data-title="Valle Verde">
+<area shape="rect" coords="1019,2,418,84" href="https://es.wikipedia.org/wiki/Lago_Pellegrini" title="Lago Pellegrini" data-title="Lago Pellegrini">
+<area shape="rect" coords="942,153,343,235" href="https://es.wikipedia.org/wiki/Cerro_Policia" title="Cerro Policía" data-title="Cerro Policía">
+<area shape="rect" coords="792,190,198,272" href="https://es.wikipedia.org/wiki/Aguada_Guzman" title="Aguada Guzmán" data-title="Aguada Guzmán">
+<area shape="rect" coords="617,190,118,272" href="https://es.wikipedia.org/wiki/Naupahen" title="Naupahen" data-title="Naupahen">
+<area shape="rect" coords="716,266,118,348" href="https://es.wikipedia.org/wiki/Blancura_Centro" title="Blancura Centro" data-title="Blancura Centro">
+<area shape="rect" coords="716,341,118,423" href="https://es.wikipedia.org/wiki/Mencue" title="Mencué" data-title="Mencué">
+<area shape="rect" coords="716,379,118,461" href="https://es.wikipedia.org/wiki/Colan_Conuhe" title="Colan Conuhe" data-title="Colan Conuhe">
+<area shape="rect" coords="491,379,-55,356" href="https://es.wikipedia.org/wiki/Corralito" title="Corralito" data-title="Corralito">
+<area shape="rect" coords="491,417,-55,394" href="https://es.wikipedia.org/wiki/Villa_Llanquin" title="Villa Llanquin" data-title="Villa Llanquin">
+<area shape="rect" coords="491,455,-55,432" href="https://es.wikipedia.org/wiki/Laguna_Blanca" title="Laguna Blanca" data-title="Laguna Blanca">
+<area shape="rect" coords="491,493,-55,470" href="https://es.wikipedia.org/wiki/El_Manso" title="El Manso" data-title="El Manso">
+<area shape="rect" coords="605,493,17,575" href="https://es.wikipedia.org/wiki/Mamuel_Choiche" title="Mamuel Choiche" data-title="Mamuel Choiche">
+<area shape="rect" coords="796,493,197,575" href="https://es.wikipedia.org/wiki/Comico" title="Comicó" data-title="Comicó">
+<area shape="rect" coords="907,493,309,575" href="https://es.wikipedia.org/wiki/Conaniyeu" title="Conaniyeu" data-title="Conaniyeu">
+<area shape="rect" coords="1057,493,459,575" href="https://es.wikipedia.org/wiki/Arroyo_Los_Berros" title="Arroyo Los Berros" data-title="Arroyo Los Berros">
+<area shape="rect" coords="868,341,282,423" href="https://es.wikipedia.org/wiki/Aguada_de_Guerra" title="Aguada de Guerra" data-title="Aguada de Guerra">
+<area shape="rect" coords="868,417,282,499" href="https://es.wikipedia.org/wiki/El_Cain" title="El Caín" data-title="El Caín">
+<area shape="rect" coords="716,417,118,499" href="https://es.wikipedia.org/wiki/Rio_Chico" title="Río Chico" data-title="Río Chico">
+<area shape="rect" coords="1530,380,816,349" href="https://es.wikipedia.org/wiki/El_C%C3%B3ndor_(Argentina)" title="El Cóndor" data-title="El Cóndor">
+<area shape="rect" coords="1199,135,603,217" href="https://es.wikipedia.org/wiki/El_C%C3%B3ndor_(Argentina)" title="Chelforó" data-title="Chelforó">
+<!-- Enlaces añadidos -->
+<area shape="rect" coords="1329,135,603,217" href="https://es.wikipedia.org/wiki/Yaminué" title="Yaminué" data-title="Yaminué">
+<area shape="rect" coords="1329,235,603,317" href="https://es.wikipedia.org/wiki/Rincón_Treneta" title="Rincón Treneta" data-title="Rincón Treneta">
+<area shape="rect" coords="1329,317,603,399" href="https://es.wikipedia.org/wiki/Sierra_Pailemán" title="Sierra Pailemán" data-title="Sierra Pailemán">
+
+        
+    </map>
+
+
+
+    </map>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const titlesContainer = document.getElementById('titles-container');
+            const areas = document.querySelectorAll('map area');
+            const img = document.getElementById('mapa-img');
+
+            areas.forEach(area => {
+                const coords = area.getAttribute('coords').split(',');
+                const x1 = parseInt(coords[0], 10);
+                const y1 = parseInt(coords[1], 10);
+                const x2 = parseInt(coords[2], 10);
+                const y2 = parseInt(coords[3], 10);
+                const title = area.getAttribute('data-title');
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'link-title';
+                titleDiv.style.left = `${x1 + (x2 - x1) / 2}px`;
+                titleDiv.style.top = `${y1 + (y2 - y1) / 2}px`;
+
+                const link = document.createElement('a');
+                link.href = area.href;
+                link.target = '_blank';
+                link.title = title;
+                link.innerHTML = `<i class="fas fa-desktop"></i> ${title}`;
+                titleDiv.appendChild(link);
+
+                titlesContainer.appendChild(titleDiv);
+            });
+        });
+    </script>
+</body>
+</html>
